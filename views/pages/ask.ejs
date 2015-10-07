@@ -9,15 +9,56 @@
   <header>
     <div class="header-content">
         <div class="header-content-inner">
-            <img src="/img/examplfy-logo-white.png" width="400" height="280">
-            <br>
-            <a href="#question" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            <h1>Ask Us a Question</h1>
+            <hr>
         </div>
+        <div ng-controller="askController">
+          <form class="simple-form" name="form" ng-submit="submit()"> 
+
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-4 text-center">
+                <select ng-model="topicName" class="btn-primary" ng-options="t for t in topicNames" ng-change="evaluateConcepts()" name="topic"></select>
+                <span ng-show="topicName.length==0">Select topic</span>
+              </div>
+              <div class="col-md-4 text-center">
+                <select ng-model="conceptName" class="btn-primary" ng-options="c for c in conceptNames" name="concept"></select>
+                <span ng-show="conceptName.length==0">Select concept</span>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+
+            <br>
+
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-4 text-center">
+                <input type="text" class="form-control" name="title" ng-model="title" placeholder="Your Question's Title" required="" /><hr>
+              </div>
+              <div class="col-md-4 text-center">
+                <input type="text" class="form-control" name="email" ng-model="email" placeholder="Your Email Address" required="" /><hr>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12"></div>
+                <textarea class="form-control form" rows="5" ng-model="content" required="" ></textarea>
+              </div>
+            </div> <!-- row -->
+
+            <div class="row">
+              <div class="col-md-12">
+                <input type="submit" class="btn btn-primary"></input>
+              </div>
+            </div> <!-- row -->
+
+
+          </form>
+        </div>
+
     </div>
 
-    <div ng-controller="askController">
-        <p>{{ exampleList }}</p>
-    </div>
 
   </header>
 
