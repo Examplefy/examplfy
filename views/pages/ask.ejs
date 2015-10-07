@@ -1,0 +1,28 @@
+<html lang="en" ng-app='app'>
+
+<head>
+    <% include ../partials/header.ejs %>
+</head>
+
+<body id="page-top" class="fuelux">
+
+  <header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <img src="/img/examplfy-logo-white.png" width="400" height="280">
+            <br>
+            <a href="#question" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+        </div>
+    </div>
+
+    <div ng-controller="askController">
+        <p>{{ exampleList }}</p>
+    </div>
+
+  </header>
+
+    <% include ../partials/nav.ejs %>
+    <% include ../partials/footer.ejs %>
+</body>
+
+</html>
