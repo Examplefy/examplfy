@@ -13,7 +13,7 @@
             <hr>
         </div>
         <div ng-controller="askController">
-          <form class="simple-form" name="form" ng-submit="submit()"> 
+          <form class="simple-form" name="form" ng-submit="submit()">
 
             <div class="row">
               <div class="col-md-2"></div>
@@ -48,9 +48,20 @@
             </div> <!-- row -->
 
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <input type="file" nv-file-select uploader="uploader" />
+                <ul>
+                    <li ng-repeat="item in uploader.queue">
+                        Name: <span ng-bind="item.file.name"></span><br/>
+                        <button ng-click="item.upload()">upload</button>
+                    </li>
+                </ul>
+              </div>
+              <div class="col-md-4">
                 <input type="submit" class="btn btn-primary"></input>
               </div>
+              <div class="col-md-2"></div>
             </div> <!-- row -->
 
 

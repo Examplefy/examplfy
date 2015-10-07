@@ -1,8 +1,11 @@
-angular.module('app.controllers', []).
-  controller('askController', function($scope, examplfyAPIservice) {
-    $scope.topicName=""
-    $scope.conceptName=""
-    $scope.picture=""
+angular.module('app.controllers', ['angularFileUpload']).
+  controller('askController', function($scope, FileUploader, examplfyAPIservice) {
+    $scope.topicName="";
+    $scope.conceptName="";
+    $scope.picture="";
+
+    $scope.uploader = new FileUploader();
+
     examplfyAPIservice.getTopics().success(function (response) {
         //Dig into the responde to get the relevant data
         var topicNames = [];
