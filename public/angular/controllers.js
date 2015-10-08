@@ -1,10 +1,15 @@
-angular.module('app.controllers', ['angularFileUpload']).
-  controller('askController', function($scope, FileUploader, examplfyAPIservice) {
+angular.module('app.controllers', ['ngFileUpload']).
+  controller('askController', function($scope, Upload, examplfyAPIservice, examplfyDropboxService) {
     $scope.topicName="";
     $scope.conceptName="";
     $scope.picture="";
 
-    $scope.uploader = new FileUploader();
+    $scope.upload = function(file) {
+      examplfyDropboxService.upload(file)
+        .then(function(response) {
+          alert(response);
+        });
+    }
 
     examplfyAPIservice.getTopics().success(function (response) {
         //Dig into the responde to get the relevant data
@@ -65,7 +70,6 @@ angular.module('app.controllers', ['angularFileUpload']).
               $scope.email = "";
               $scope.topicName = "";
               $scope.conceptName = "";
-              //alert(JSON.stringify(result));
             })
         })
     }

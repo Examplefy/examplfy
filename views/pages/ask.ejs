@@ -42,21 +42,17 @@
             </div>
 
             <div class="row">
-              <div class="col-md-12"></div>
+              <div class="col-md-12">
                 <textarea class="form-control form" rows="5" ng-model="content" required="" ></textarea>
               </div>
             </div> <!-- row -->
 
+            <br>
+
             <div class="row">
               <div class="col-md-2"></div>
               <div class="col-md-4">
-                <input type="file" nv-file-select uploader="uploader" />
-                <ul>
-                    <li ng-repeat="item in uploader.queue">
-                        Name: <span ng-bind="item.file.name"></span><br/>
-                        <button ng-click="item.upload()">upload</button>
-                    </li>
-                </ul>
+                <input type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ng-change="upload(picFile)" />
               </div>
               <div class="col-md-4">
                 <input type="submit" class="btn btn-primary"></input>

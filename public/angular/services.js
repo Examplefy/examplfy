@@ -1,5 +1,5 @@
-angular.module('app.services', []).
-  factory('examplfyAPIservice', function($http) {
+var m = angular.module('app.services', ['ngFileUpload']);
+m.factory('examplfyAPIservice', function($http) {
 
     var examplfyAPI = {};
     var token = 'ef96151d-aa33-4bd0-a078-86e3a6de9cf7'
@@ -64,7 +64,6 @@ angular.module('app.services', []).
       })
     }
 
-
     examplfyAPI.putExample = function(title, content, topic, concept, email, picture) {
       return $http({
         method: 'POST',
@@ -85,4 +84,17 @@ angular.module('app.services', []).
     }
 
     return examplfyAPI;
+  });
+m.factory('examplfyDropboxService', function($http, Upload) {
+    var examplfyDropbox = {};
+    var key = '8banmv1gdgiyolw';
+    var secret = 'kqtravz0ootxns1';
+
+    examplfyDropbox.upload = function(file) {
+      return Upload.upload({
+        url: 'https://content.dropboxapi.com/1/files_put/auto/images',
+        data: {file: file}
+    })};
+
+    return examplfyDropbox;
   });
