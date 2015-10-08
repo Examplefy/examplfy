@@ -89,11 +89,15 @@ m.factory('examplfyDropboxService', function($http, Upload) {
     var examplfyDropbox = {};
     var key = '8banmv1gdgiyolw';
     var secret = 'kqtravz0ootxns1';
+    var token = 'FAVaNyCtzIAAAAAAAAAAB4WyrJQVgwjCrDfVwThvTROKzdGO1GXNFsp_hjx6ZSs6';
 
     examplfyDropbox.upload = function(file) {
       return Upload.upload({
         url: 'https://content.dropboxapi.com/1/files_put/auto/images',
-        data: {file: file}
+        data: {file: file},
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:5000'
+        }
     })};
 
     return examplfyDropbox;
